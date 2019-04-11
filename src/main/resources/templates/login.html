@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h3:nth-child(2) {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h3>登陆页面</h3>
+<h3 th:text="${msg}"></h3>
+<form action="/login">
+
+    用户名：<input id="username" name="username"><br>
+    密 码： <input id="password" type="password" name="password"><br>
+    <!--<button onclick="submit()">提交</button>-->
+    <input type="submit">
+</form>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(function () {
+
+    })
+
+    function submit() {
+        console.log("=======")
+        var data = {};
+        data["username"] = $("#username").val();
+        data["password"] = $("#password").val();
+        $.ajax({
+            url: "/login",
+            type: "post",
+            data: data
+        })
+    }
+</script>
+</html>
